@@ -12,6 +12,7 @@ function App(): JSX.Element {
 
   return (
     <div className="App">
+      qweqw
       {isLoadingPost ? 'Loading Post....' : posts.map((p) => <p key={p.id}>{p.title}</p>)}
       {isAuth ? 'naka auth' : 'hinde'}
       <button type="button" disabled={isLoggingIn} onClick={async () => await login()}>
