@@ -4,5 +4,7 @@
   "printWidth": 90,
   "tabWidth": 2,
   "endOfLine": "auto",
-  "singleQuote": true
+  "singleQuote": false,
+  "jsxSingleQuote": false,
+  "bracketSpacing": true
 }

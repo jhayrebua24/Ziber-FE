@@ -5,6 +5,7 @@
     "es2021": true
   },
   "extends": [
+    "eslint:recommended",
     "plugin:react/recommended",
     "standard-with-typescript",
     "plugin:prettier/recommended" // Make sure this is always the last element in the array.,
@@ -14,7 +15,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module",
     "baseUrl": "./src",
-    "project": ["./tsconfig.json"]
+    "project": "tsconfig.json"
   },
   "plugins": ["react", "prettier", "import"],
   "rules": {
@@ -27,5 +28,10 @@
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/consistent-type-assertions": "off",
     "@typescript-eslint/explicit-function-return-type": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
   }
 }
