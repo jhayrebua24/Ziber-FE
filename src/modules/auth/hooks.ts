@@ -1,9 +1,9 @@
 // //
 
-// import axios, { AxiosResponse } from "axios";
-// import { UseMutateAsyncFunction, useMutation, useQuery } from "@tanstack/react-query";
-// import { setAuth } from "redux/auth/authSlice";
-// import { useAppDispatch } from "redux/hooks";
+import { useState } from "react";
+import { useAppDispatch } from "redux/hooks";
+
+import { setAuth } from "./redux/authSlice";
 
 // interface TResponse {
 //   message: string;
@@ -43,24 +43,19 @@
 //   return [data ?? [], isLoading];
 // };
 
-// export const useLogin = (): [UseMutateAsyncFunction<TResponse>, boolean] => {
-//   const dispatch = useAppDispatch();
-//   const { mutateAsync, isLoading } = useMutation(["AUTH_LOGIN"], async () => {
-//     try {
-//       const data: AxiosResponse<TResponse> = await axios.post(
-//         "https://novadeci-user-dev.yondu.net/api/v1/login",
-//         {
-//           username: "120107",
-//           password: "Yondu@123!",
-//         },
-//       );
+export const useLogin = (): [() => Promise<void>, boolean] => {
+  const dispatch = useAppDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
-//       dispatch(setAuth(true));
-//       return data.data;
-//     } catch {
-//       return {} as TResponse;
-//     }
-//   });
+  const mutateAsync = async () =>
+    await new Promise<void>((resolve) => {
+      setIsLoading(true);
+      setTimeout(() => {
+        resolve();
+        setIsLoading(false);
+        dispatch(setAuth(true));
+      }, 3000);
+    });
 
-//   return [mutateAsync, isLoading];
-// };
+  return [mutateAsync, isLoading];
+};
