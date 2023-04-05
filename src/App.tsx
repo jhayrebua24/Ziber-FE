@@ -1,7 +1,11 @@
-import "./App.css";
+import { Button } from "@mantine/core";
 
 function App(): JSX.Element {
-  return <div className="App">Welcome</div>;
+  return (
+    <div>
+      <Button size="xs">Hello</Button>
+    </div>
+  );
 }
 
 export default App;
