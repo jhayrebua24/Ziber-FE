@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { LayoutReducer, layoutSlice } from "common/Layout/redux/layoutSlice";
 
 import { AuthReducer, authSlice } from "../modules/auth/redux/authSlice";
 
 const store = configureStore({
   reducer: {
     [authSlice.name]: AuthReducer,
+    [layoutSlice.name]: LayoutReducer,
   },
   devTools: !import.meta.env.PROD,
 });
