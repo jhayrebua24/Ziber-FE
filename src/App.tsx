@@ -1,5 +1,5 @@
 import { MantineProvider } from "@mantine/core";
-import { selectScheme } from "common/Layout/redux/selectors";
+import { selectScheme } from "common/layout/redux/selectors";
 import { selectIsAuth } from "modules/auth/redux/selectors";
 import { useAppSelector } from "redux/hooks";
 import PrivateRoutes from "routes/PrivateRoutes";

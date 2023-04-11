@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { LayoutReducer, layoutSlice } from "common/Layout/redux/layoutSlice";
+import { LayoutReducer, layoutSlice } from "common/layout/redux/layoutSlice";
 
 import { AuthReducer, authSlice } from "../modules/auth/redux/authSlice";
 

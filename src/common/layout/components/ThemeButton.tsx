@@ -10,7 +10,7 @@ function ThemeButton() {
   const dispatch = useDispatch();
 
   return (
-    <span
+    <div
       className="border-0 p-1.5 outline-none cursor-pointer"
       onClick={() => dispatch(toggleTheme())}
     >
@@ -19,7 +19,7 @@ function ThemeButton() {
       ) : (
         <FiMoon className="text-gray-700" size={15} />
       )}
-    </span>
+    </div>
   );
 }
 
