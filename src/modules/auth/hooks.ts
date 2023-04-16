@@ -1,61 +1,27 @@
-// //
-
 import { useState } from "react";
-import { useAppDispatch } from "redux/hooks";
+import { useDispatch } from "react-redux";
+import supabase from "utils/supabase";
 
 import { setAuth } from "./redux/authSlice";
+import { LoginHook, LoginPayload } from "./types";
 
-// interface TResponse {
-//   message: string;
-//   result: {
-//     authorization: {
-//       access_token: string;
-//       token_type: string;
-//     };
-//     user: {
-//       id: number;
-//       username: string;
-//       status: string;
-//     };
-//   };
-// }
-
-// interface TPost {
-//   userId: number;
-//   id: number;
-//   title: string;
-//   body: string;
-// }
-
-// export const useFetchPosts = (): [TPost[], boolean] => {
-//   const { data, isLoading } = useQuery(["POST"], async () => {
-//     try {
-//       const data: AxiosResponse<TPost[]> = await axios.get(
-//         "https://jsonplaceholder.typicode.com/posts",
-//       );
-
-//       return data?.data;
-//     } catch {
-//       return [] as TPost[];
-//     }
-//   });
-
-//   return [data ?? [], isLoading];
-// };
-
-export const useLogin = (): [() => Promise<void>, boolean] => {
-  const dispatch = useAppDispatch();
+export const useLogin = (): LoginHook => {
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const mutateAsync = async () =>
-    await new Promise<void>((resolve) => {
+  const login = async (payload: LoginPayload) => {
+    try {
       setIsLoading(true);
-      setTimeout(() => {
-        resolve();
-        setIsLoading(false);
-        dispatch(setAuth(true));
-      }, 3000);
-    });
+      const { error } = await supabase.auth.signInWithPassword(payload);
+      if (error) throw new Error(error.message);
+      dispatch(setAuth(true));
+    } catch (e) {
+      setError((e as Record<string, string>)?.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-  return [mutateAsync, isLoading];
+  return [login, isLoading, error];
 };

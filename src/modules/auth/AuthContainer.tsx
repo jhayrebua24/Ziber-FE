@@ -1,4 +1,4 @@
-import { Button, Divider, Image, Switch, TextInput } from "@mantine/core";
+import { Button, Divider, Image, Notification, Switch, TextInput } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import FinanceSvg from "assets/img/finance.svg";
 import ThemeButton from "common/layout/components/ThemeButton";
@@ -7,15 +7,15 @@ import * as yup from "yup";
 import { useLogin } from "./hooks";
 
 const schema = yup.object().shape({
-  username: yup.string().required().label("Username"),
+  email: yup.string().required().email().label("Email"),
   password: yup.string().required().label("Password"),
 });
 
 function AuthContainer(): JSX.Element {
-  const [login, isLoading] = useLogin();
+  const [login, isLoading, error] = useLogin();
   const form = useForm({
     initialValues: {
-      username: "",
+      email: "",
       password: "",
       rememberMe: false,
     },
@@ -32,13 +32,21 @@ function AuthContainer(): JSX.Element {
         <div className="absolute top-2 right-0">
           <ThemeButton />
         </div>
-        <form onSubmit={form.onSubmit(login)} className="p-4 w-full rounded-lg space-y-4">
+        <form
+          onSubmit={form.onSubmit(async (payload) => await login(payload))}
+          className="p-4 w-full rounded-lg space-y-4"
+        >
           <h1 className="font-thin tracking-tightest">Welcome!</h1>
+          {error && (
+            <Notification title="Login failed" color="red" withCloseButton={false}>
+              {error}
+            </Notification>
+          )}
           <TextInput
             withAsterisk
-            label="Username"
-            placeholder="juandelacruz"
-            {...form.getInputProps("username")}
+            label="Email"
+            placeholder="juandelacruz@mail.com"
+            {...form.getInputProps("email")}
           />
           <TextInput
             withAsterisk
