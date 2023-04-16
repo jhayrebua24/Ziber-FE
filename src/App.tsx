@@ -17,7 +17,7 @@ function App(): JSX.Element {
     if (!isAppReady) return <AppGettingReady />;
 
     return isAuth ? <PrivateRoutes /> : <PublicRoutes />;
-  }, [isAppReady]);
+  }, [isAppReady, isAuth]);
 
   return (
     <MantineProvider

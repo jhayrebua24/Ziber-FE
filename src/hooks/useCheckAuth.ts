@@ -11,9 +11,8 @@ const useCheckAuth = (): boolean => {
     const checkIfAuth = async () => {
       const { data } = await supabase.auth.getSession();
       setAppReady(true);
-      if (data) {
-        dispatch(setAuth(true));
-      }
+      console.log(data);
+      if (data.session) dispatch(setAuth(true));
     };
 
     checkIfAuth();
