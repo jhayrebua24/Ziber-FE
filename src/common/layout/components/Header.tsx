@@ -6,9 +6,14 @@ import ThemeButton from "./ThemeButton";
 interface Props {
   opened: boolean;
   setOpened: React.Dispatch<React.SetStateAction<boolean>>;
+  title: React.ReactNode;
 }
 
-function Header({ opened, setOpened }: Props) {
+Header.defaultProps = {
+  title: "Welcome",
+};
+
+function Header({ opened, setOpened, title }: Props) {
   const theme = useMantineTheme();
   return (
     <Head height={{ base: 50, md: 70 }} p="md" className="bg-forest-500">
@@ -29,9 +34,11 @@ function Header({ opened, setOpened }: Props) {
             mr="xl"
           />
         </MediaQuery>
-        <Text className="text-xl tracking-tighter text-white font-medium">
-          Accounting
-        </Text>
+        {typeof title === "string" ? (
+          <Text className="text-xl tracking-tighter text-white font-medium">{title}</Text>
+        ) : (
+          title
+        )}
         <ThemeButton />
       </div>
     </Head>
