@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setAuth } from "modules/auth/redux/authSlice";
+import { setAuth } from "modules/portal/auth/redux/authSlice";
 import supabase from "utils/supabase";
 
 import useFetchProfile from "./useFetchProfile";

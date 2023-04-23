@@ -1,7 +1,7 @@
 @import "./nav.css";
 
-/* @tailwind base;
-@tailwind components; */
+/* @tailwind base; */
+@tailwind components;
 @tailwind utilities;
 
 html,

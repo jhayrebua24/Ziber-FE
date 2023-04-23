@@ -8,7 +8,7 @@ import { AnyObject } from "common/types";
 import supabase from "./supabase";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_PROXY_URL,
+  baseURL: "/api",
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",

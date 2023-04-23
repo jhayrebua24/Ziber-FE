@@ -1,4 +1,4 @@
-import { selectProfile } from "modules/auth/redux/selectors";
+import { selectProfile } from "modules/portal/auth/redux/selectors";
 import { useAppSelector } from "redux/hooks";
 
 const useGetProfile = () => useAppSelector(selectProfile);

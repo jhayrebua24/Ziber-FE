@@ -1,4 +1,4 @@
-import Layout from "common/layout";
+import { Layout } from "common/components/layout";
 import useGetProfile from "hooks/useGetProfile";
 
 import AdminApps from "./components/AdminApps";

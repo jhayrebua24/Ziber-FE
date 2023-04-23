@@ -1,7 +1,7 @@
 import { Button, Divider, Image, Notification, Switch, TextInput } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import FinanceSvg from "assets/img/finance.svg";
-import ThemeButton from "common/layout/components/ThemeButton";
+import ThemeButton from "common/components/layout/components/ThemeButton";
 import * as yup from "yup";
 
 import { useLogin } from "./hooks";

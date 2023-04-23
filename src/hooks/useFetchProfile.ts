@@ -3,8 +3,8 @@ import { UseMutateAsyncFunction, useMutation } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
 import { USER_PROFILE } from "common/constants";
 import { ApiResponse } from "common/types";
-import { setProfile } from "modules/auth/redux/authSlice";
-import { UserProfile } from "modules/auth/types";
+import { setProfile } from "modules/portal/auth/redux/authSlice";
+import { UserProfile } from "modules/portal/auth/types";
 import api from "utils/api";
 
 const useFetchProfile = (): UseMutateAsyncFunction => {

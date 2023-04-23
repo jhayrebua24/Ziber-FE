@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { MantineProvider } from "@mantine/core";
+import { selectScheme } from "common/components/layout/redux/selectors";
 import AppGettingReady from "common/getting-ready/AppGettingReady";
-import { selectScheme } from "common/layout/redux/selectors";
 import useCheckAuth from "hooks/useCheckAuth";
-import { selectIsAuth } from "modules/auth/redux/selectors";
+import { selectIsAuth } from "modules/portal/auth/redux/selectors";
 import { useAppSelector } from "redux/hooks";
 import PrivateRoutes from "routes/PrivateRoutes";
 import PublicRoutes from "routes/PublicRoutes";
