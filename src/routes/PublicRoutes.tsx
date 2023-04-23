@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Auth } from "modules/portal";
+import { Auth } from "apps/portal";
 
 function PublicRoutes() {
   return (

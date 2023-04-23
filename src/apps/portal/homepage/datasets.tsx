@@ -1,7 +1,7 @@
 import { AiFillAppstore } from "react-icons/ai";
 import { BsBuildingsFill } from "react-icons/bs";
 import { HiIdentification, HiUsers } from "react-icons/hi";
-import { Organization } from "modules/admin";
+import { Modules, Organization, Roles } from "apps/admin";
 
 import { RouteListTypes } from "./types";
 
@@ -16,13 +16,13 @@ export const adminAccessApps: RouteListTypes[] = [
     path: "/modules",
     label: "Modules",
     icon: AiFillAppstore,
-    component: () => <div />,
+    component: Modules,
   },
   {
     path: "/roles",
     label: "Roles",
     icon: HiIdentification,
-    component: () => <div />,
+    component: Roles,
   },
   {
     path: "/users",

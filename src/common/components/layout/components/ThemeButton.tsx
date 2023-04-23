@@ -5,7 +5,15 @@ import { useAppSelector } from "redux/hooks";
 import { toggleTheme } from "../redux/layoutSlice";
 import { selectScheme } from "../redux/selectors";
 
-function ThemeButton() {
+interface Props {
+  adjustColor?: boolean;
+}
+
+ThemeButton.defaultProps = {
+  adjustColor: true,
+};
+
+function ThemeButton({ adjustColor }: Props) {
   const scheme = useAppSelector(selectScheme);
   const dispatch = useDispatch();
 
@@ -15,9 +23,9 @@ function ThemeButton() {
       onClick={() => dispatch(toggleTheme())}
     >
       {scheme === "dark" ? (
-        <FiSun className="text-white" size={15} />
+        <FiSun className="text-white" size={18} />
       ) : (
-        <FiMoon className="text-gray-700" size={15} />
+        <FiMoon className={adjustColor ? "text-gray-700" : "text-white"} size={18} />
       )}
     </div>
   );
