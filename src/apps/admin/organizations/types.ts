@@ -4,3 +4,9 @@ export interface OrganizationType {
   description: null | string;
   created_at: string;
 }
+
+export interface OrganizationModalType {
+  onClose: () => void;
+  data?: OrganizationModalType;
+  isEditMode?: boolean;
+}

@@ -3,6 +3,7 @@ import axios, {
   AxiosRequestHeaders,
   InternalAxiosRequestConfig,
 } from "axios";
+import { openToast } from "common/components/toast/index.";
 import { AnyObject } from "common/types";
 
 import supabase from "./supabase";
@@ -56,17 +57,24 @@ api.interceptors.response.use(
               ? errorMessage[0]
               : "Unprocessable request";
         }
+        openToast({
+          message,
+          type: "error",
+          title: "Error",
+        });
       } catch {
-        // createToast({
-        //   status: "error",
-        //   message,
-        // });
+        openToast({
+          message,
+          type: "error",
+          title: "Error",
+        });
       }
     } else {
-      // createToast({
-      //   status: "error",
-      //   message,
-      // });
+      openToast({
+        message,
+        type: "error",
+        title: "Error",
+      });
     }
     console.log(message);
     return await Promise.reject(error);
