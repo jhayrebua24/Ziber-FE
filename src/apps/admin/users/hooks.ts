@@ -5,7 +5,7 @@ import { ApiResponse } from "common/types";
 import api from "utils/api";
 
 export const useGetUsers = (): [UserProfile[], boolean] => {
-  const { data, isLoading } = useQuery(["MODULES"], async () => {
+  const { data, isLoading } = useQuery(["USERS"], async () => {
     try {
       const { data }: AxiosResponse<ApiResponse<UserProfile[]>> = await api.get("/users");
       return data.data;

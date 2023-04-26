@@ -6,7 +6,7 @@ import api from "utils/api";
 import { RoleType } from "./types";
 
 export const useGetRoles = (): [RoleType[], boolean] => {
-  const { data, isLoading } = useQuery(["MODULES"], async () => {
+  const { data, isLoading } = useQuery(["ROLES"], async () => {
     try {
       const { data }: AxiosResponse<ApiResponse<RoleType[]>> = await api.get("/roles");
       return data.data;
