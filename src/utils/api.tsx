@@ -3,9 +3,11 @@ import axios, {
   AxiosRequestHeaders,
   InternalAxiosRequestConfig,
 } from "axios";
-import { openToast } from "common/components/toast/index.";
+import { createModal } from "common/components/modal";
+import { openToast } from "common/components/toast";
 import { AnyObject } from "common/types";
 
+import { history } from "./history";
 import supabase from "./supabase";
 
 const api = axios.create({
@@ -44,7 +46,18 @@ api.interceptors.response.use(
 
         const errorMessage = (data as AnyObject)?.message;
 
-        if (status === 401) message = errorMessage || "Unauthorized";
+        if (status === 401) {
+          createModal({
+            title: "Error",
+            standardFormat: {
+              title: "Session Expired",
+              message: "Please login to access page",
+              onOk: () => history.push("/logout"),
+            },
+          });
+
+          return;
+        }
         if (status === 400) message = errorMessage || "Bad Request";
         if (status === 404) message = errorMessage || "Invalid route";
         if (status === 405) message = errorMessage || "Request is not supported";
@@ -70,13 +83,15 @@ api.interceptors.response.use(
         });
       }
     } else {
-      openToast({
-        message,
-        type: "error",
+      createModal({
         title: "Error",
+        standardFormat: {
+          title: "Error",
+          message,
+          onOk: () => history.push("/logout"),
+        },
       });
     }
-    console.log(message);
     return await Promise.reject(error);
   },
 );

@@ -2,7 +2,7 @@ import { ReactNode, useMemo } from "react";
 import { Route } from "react-router-dom";
 import useGetProfile from "hooks/useGetProfile";
 
-import { adminAccessApps } from "./datasets";
+import { adminAccessApps, SUPER_ADMIN } from "./datasets";
 
 export const useGetAccessRoutes = (): ReactNode => {
   const profile = useGetProfile();
@@ -10,7 +10,7 @@ export const useGetAccessRoutes = (): ReactNode => {
 
   const accessRoutes = useMemo(() => {
     const routes: JSX.Element[] = [];
-    if (role === "super_admin") {
+    if (SUPER_ADMIN.includes(role ?? "")) {
       routes.push(
         ...adminAccessApps.map(({ component: Component, ...app }) => (
           <Route key={app.label} path={app.path} element={<Component />} />

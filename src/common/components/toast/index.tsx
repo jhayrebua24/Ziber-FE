@@ -2,6 +2,8 @@ import { createRoot } from "react-dom/client";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { Notification } from "@mantine/core";
 
+export const ToastMarker = () => <div id="toast-marker" />;
+
 export interface OpenToastType {
   type: "success" | "error";
   message: string;
@@ -9,7 +11,7 @@ export interface OpenToastType {
 }
 
 export const openToast = ({ type, message, title }: OpenToastType) => {
-  const el = document.querySelector("#toast-root");
+  const el = document.querySelector("#toast-marker");
   let timer: NodeJS.Timeout;
   if (el) {
     const root = createRoot(el);

@@ -22,3 +22,14 @@ export interface OpenModalType {
   render: ModalType["render"];
   modalProps?: Omit<ModalProps, "opened" | "onClose" | "centered" | "title">;
 }
+
+export interface CreateModalType {
+  title: string;
+  size?: ModalProps["size"];
+  render?: ModalType["render"];
+  standardFormat?: {
+    title: string;
+    message?: string;
+    onOk?: () => void;
+  };
+}

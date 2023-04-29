@@ -21,4 +21,5 @@ export interface TableType<T = AnyObject> {
   isLoading?: boolean;
   format: Array<TableFormatType<T>>;
   actionMenu?: Array<TableActionMenu<T>>;
+  emptyMessage?: string | JSX.Element;
 }

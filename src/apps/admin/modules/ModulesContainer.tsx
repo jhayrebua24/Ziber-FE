@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mantine/core";
-import { Layout } from "common/components/layout";
+import { ContainerWrapper, Layout } from "common/components/layout";
 import { Table } from "common/components/table";
 import { TableFormatType } from "common/components/table/types";
 
@@ -27,12 +27,14 @@ function ModulesContainer() {
 
   return (
     <Layout title="Modules">
-      <div className="container mx-auto mt-12">
-        <Button onClick={() => nav("/")} color="teal" className="mb-4">
-          Back
-        </Button>
+      <ContainerWrapper>
+        <div>
+          <Button onClick={() => nav("/")} color="teal" className="mb-4">
+            Back
+          </Button>
+        </div>
         <Table format={tableFormat} data={data} isLoading={isLoading} />
-      </div>
+      </ContainerWrapper>
     </Layout>
   );
 }

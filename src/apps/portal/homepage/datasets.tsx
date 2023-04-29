@@ -5,6 +5,8 @@ import { Modules, Organization, Roles, Users } from "apps/admin";
 
 import { RouteListTypes } from "./types";
 
+export const SUPER_ADMIN = ["super_admin", "SUPER_ADMIN", "SUPER ADMINs"];
+
 export const adminAccessApps: RouteListTypes[] = [
   {
     path: "/organizations",
